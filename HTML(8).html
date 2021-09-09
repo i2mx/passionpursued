@@ -1,0 +1,189 @@
+﻿    <!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="code.png">
+    <title>Learn To Code! | HTML</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #1155cc;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            box-shadow: 0px -2.5px 10px 5px #111;
+            z-index: 1;
+        }
+
+        .li {
+            float: left;
+        }
+
+            .li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+            }
+
+        a:hover {
+            background-color: #2165DC;
+        }
+
+        .homeimg {
+            width: 15px;
+        }
+
+        .Main {
+            padding-top: 3%;
+            padding-left: 1%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 120%;
+            padding-left: 300px;
+            padding-right: 7%;
+            }
+
+        h2 {
+            color: #303030;
+        }
+
+        .editor {
+            height: 300px;
+            width: 50%;
+            border-width: 0px;
+        }
+
+        .editor85 {
+            height: 500px;
+            width: 100%;
+            border-width: 0px;
+        }
+
+        p {
+            color: #202020;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        table {
+            border-color: black;
+            border-width: 2px;
+            border-style: solid;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            z-index: 0;
+            top: 3em;
+            left: 0;
+            background-color: white;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            box-shadow: 0px 10.5px 15px 0px #111;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+            .sidenav a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 15px;
+                color: #818181;
+                display: block;
+            }
+
+                .sidenav a:hover {
+                    color: #f1f1f1;
+                    background-color: #aaa;
+                }
+
+        hr {
+            width: 85%;
+        }
+    </style>
+</head>
+<body>
+    <ul class="ul">
+        <li class="li"><a href="home.html"><img src="home.png" class="homeimg"></a></li>
+        <li class="li"><a href="HTML.html">HTML </a></li>
+        <li class="li"><a href="CSS.html">CSS </a></li>
+        <li class="li"><a href="JavaScript.html">JavaScript </a></li>
+        <li class="li"><a href="Easter.html"></a></li>
+        <li class="li"><a href="Resources.html">More resources </a></li>
+        <li class="li"><a href="Tips.html">Tips </a></li>
+    </ul>
+    <div class="sidenav">
+        <p style="padding-left:10%;"> HTML </p>
+        <hr />
+        <a href="HTML.html">Introduction & Basics</a>
+        <a href="HTML(2).html">HTML Attributes</a>
+        <a href="HTML(3).html">HTML Formatting</a>
+        <a href="HTML(4).html">HTML Tables & Lists</a>
+        <a href="HTML(5).html">HTML Divs</a>
+        <a href="HTML(6).html">HTML iFrames</a>
+        <a href="HTML(7).html">Basic CSS</a>
+        <a href="HTML(8).html">HTML Class & Id</a>
+        <a href="HTML(9).html">HTML Semantic Elements</a>
+        <a href="HTML(10).html">HTML Forms</a>
+
+
+    </div>
+    <div class="Main">
+        <h1>HTML Class & Id</h1>
+        <p>
+            <br />
+            Classes and Ids are used to define elements,
+            <br />
+            they are defined inside of the tag
+            <br />
+            and it can be used with CSS.
+            <br /><br /><br /><br />
+            An element can be assigned a class like this:
+            <br />
+            <mark style="color:dimgrey">&lttagname class="classname"&gt</mark>
+            <br /><br />
+            An element can be assigned a ID like this:
+            <br />
+            <mark style="color:dimgrey">&lttagname id="idname"&gt</mark>
+            <br />
+            <br />
+            <sub>A class or an ID can be assigned to more than one element</sub>
+            <br /><br />
+            A class can be refrenced with: <br />
+            <mark style="color:dimgrey">.classname</mark>
+            <br />
+            An ID can be refrenced with: <br />
+            <mark style="color:dimgrey">.ID</mark>
+
+
+            <h1>Example</h1>
+            <iframe src="HTMLEdit15.html" class="editor85" id="HTML1"></iframe>
+            <br /><br />
+            Now that we know about Classes, IDs and CSS we can start to make elements not look that bad
+            here are some another example.
+            <iframe src="HTMLEdit16.html" class="editor85" id="HTML1"></iframe>
+
+        </p>
+
+    </div>
+    <script src="https://unpkg.com/scrollreveal@4"></script>
+    <script>
+        
+        var slideUp = {
+            distance: '100%',
+            origin: 'bottom',
+            opacity: 0.01
+        };
+        ScrollReveal().reveal('.editor, .editor85', slideUp);
+    </script>
+</body>
+</html>

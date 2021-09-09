@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <head>
+        
+        <style>
+                *{
+                    padding: 0px;
+                    margin: 0px;
+                    overflow: hidden;
+                }
+        </style>
+        
+        <title>Platformer Game</title>
+
+    </head>
+    
+    <body>
+
+    <canvas id="canvas" onkeypress="detectkey()"  ></canvas>
+
+        <script>
+
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+
+            var width = canvas.width = window.innerWidth;
+            var height = canvas.height = window.innerHeight;
+
+            var timer = 0;
+            var speed = 0;
+
+            var up = false;
+            var left = false;
+            var right = false;
+
+            var xDir = 0;
+            var yDir = 0 
+            var Dash = false;
+
+
+            function random(min, max) {
+               return Math.floor(Math.random() * (max - min + 1) + min);
+            }
+
+        document.onkeydown = function(e) { 
+            var str = "";
+            switch (e.keyCode) { 
+                case 37: 
+                    left = true;
+                    xDir = -1;
+                    break; 
+                case 38:
+                    yDir = -1;
+                    break;
+                case 40:
+                    yDir = 1;
+                    break;                    
+                case 90:  
+                    up = true;
+                    break; 
+                case 39: 
+                    right = true;
+                    xDir = 1;
+                    break; 
+                case 88:
+                    if(Dash){
+                        if(!(xDir == 0 && yDir == 0)){
+                            player.xVel = xDir * 18.75; 
+                            player.yVel = yDir * 15;
+                            Dash = false;
+                        }
+                    }
+                    break;
+                }
+            };
+
+            document.onkeyup = function(e) { 
+            var str = "";
+            switch (e.keyCode) { 
+                case 37: 
+                    left = false;
+                    xDir = 0;
+                    break; 
+                case 38:
+                    yDir = 0;
+                    break;
+                case 40:
+                    yDir = 0;
+                    break;  
+                case 90: 
+                    up = false;
+                    break; 
+                case 39: 
+                    right = false;
+                    xDir = 0;
+                    break; 
+                } 
+            };
+
+            class Platformer{
+                constructor(){
+                    this.x = width/2;
+                    this.y= 0;
+                    this.xVel = 0;
+                    this.yVel = 0;
+                }
+                draw(){
+                    ctx.beginPath();
+                    ctx.fillStyle = "rgb(255,255,255)";
+                    ctx.arc(this.x,this.y,20,0,Math.PI*2)
+                    ctx.fill();
+                    ctx.closePath();
+                }
+
+                move(xDirection){
+                    this.xVel += xDirection;
+                }
+
+                update(){
+                        this.y -= speed;
+                        this.Xcheck()
+                        this.Ycheck();
+                }
+
+                jump(){
+                    if(this.isOnGround(0,10) || this.jumper){
+                        this.yVel = -12;    
+                        Dash = true;
+                    } 
+                }
+
+                Ycheck(){
+                    this.y += this.yVel
+                 
+                        if(this.isOnGround(0,0)){
+                            this.y -= this.yVel * 1;
+                            this.yVel = this.yVel * 0.25;                          
+                            return
+                        } else {
+                            this.yVel += 0.5;   
+                        }
+                }
+                Xcheck(){
+                    this.x += this.xVel;
+                        if(this.isOnGround(0,0)){
+                            this.x -= this.xVel;
+                            this.xVel = 0;                            
+                            return
+                        } else {
+                            this.xVel *= 0.875;  
+                        }
+                }
+
+                isOnGround(x,y){
+                    for(let j = 0; j < list.length; j++){
+                        if(this.y + y + 20 > list[j].y && this.y + y - 20 < list[j].y + list[j].height && list[j].x - 20 < this.x + x && list[j].x + 20 + list[j].width > this.x + x ){
+                            if(list[j] instanceof Platform){
+                                return (1);
+                            }
+                        } 
+
+                    }
+                    return(0);
+                }
+
+                portalCheck(){
+                        if(this.y + 20 > list[list.length-1].y - 50 && this.y - 20 < list[list.length-1].y + 50 && list[list.length-1].x - 50 < this.x + 20 && list[list.length-1].x + 50 > this.x - 20){
+                            nextLev();
+                        } 
+                }
+                dasher(){
+                    if(this.isOnGround(0,1)){
+                               Dash = true;
+                    }   
+                }
+                rechargeCheck(){
+                    var yesno = false;
+                    for(let j = 0; j < list.length; j++){
+                        if(this.y + 20 > list[j].y - 20 && this.y - 20 < list[j].y + 20  && list[j].x - 20 < this.x + 20 && list[j].x + 20 > this.x - 20){
+                            if(list[j] instanceof  Recharge){
+                                Dash = true;
+                                list.splice(j,1)
+                                var audio = new Audio('glass.mp3');
+                                audio.volume = 0.1;
+                                audio.play();
+                                this.yVel = -10;
+                            }
+                        } 
+                    }                        
+                }
+                deadCheck(){
+                    for(let j = 0; j < list.length; j++){
+                        if(this.y + 20 > list[j].y && this.y - 20 < list[j].y + list[j].height && list[j].x - 20 < this.x && list[j].x + 20 + list[j].width > this.x){
+                            if(list[j] instanceof Dead){
+                                var audio = new Audio('glass.mp3');
+                                audio.volume = 0.21 ;
+                                audio.play();
+                                Explosion(10);
+                                level(levelNum);
+                            }
+                        } 
+                    }
+                }
+                bound(){
+                    if(this.x < 20){
+                        this.x = 20;
+                        this.xVel = 0.1 * Math.abs(this.xVel);
+                    }
+                    if(this.x > width - 20){
+                        this.x = width - 20;
+                        this.xVel = -0.1  * Math.abs(this.xVel);
+                    }
+                    if(this.y < 0){
+                        this.y = 0
+                        this.yVel = 0;
+                    }
+                }
+            }
+
+            class Platform {
+                constructor(x, x2, y,y2){
+                    this.width = x2;
+                    this.height = y2;
+                    this.x = x;
+                    this.y = y;
+                }                
+                draw(){
+                    ctx.beginPath();
+                    ctx.fillStyle = "rgb(255,255,255)";
+                    ctx.rect(this.x,this.y,this.width,this.height);
+                    ctx.fill();
+                    ctx.closePath();
+                }
+
+                update(){
+                    
+                }
+            }
+
+            class Dead{
+                constructor(x,x2,y,y2){
+                    this.width = x2;
+                    this.height = y2;
+                    this.x = x;
+                    this.y = y;
+                }
+                draw(){
+                    ctx.beginPath();
+                    ctx.fillStyle = "rgb(255,0,0)";
+                    ctx.rect(this.x,this.y,this.width,this.height);
+                    ctx.fill();
+                    ctx.closePath();
+                }
+                update(){
+
+                }
+            } 
+class Portal{
+    constructor(x,y){
+        this.x = x;
+        this.orX = x;
+        this.y = y;
+        this.orY = y;
+        this.thing = 0;
+    }
+    draw(){
+        ctx.beginPath();
+        ctx.fillStyle = "white";
+        ctx.rect(this.x-50,this.y -50,100,100)
+        ctx.fill();
+        ctx.closePath();
+    }
+    update(){
+        this.thing = (this.thing + 0.05);
+        this.y = this.orY + Math.sin(this.thing) * 10;
+        if(this.thing > 360){
+            this.thing = 0;
+        }
+    }
+}
+
+class Recharge{
+    constructor(x,y){
+        this.x = x;
+        this.orX = x;
+        this.y = y;
+        this.orY = y;
+        this.thing = 0;
+    }
+    draw(){
+        ctx.beginPath();
+        ctx.fillStyle = "#3366CC";
+        ctx.rect(this.x - 20,this.y - 20,40,40)
+        ctx.fill();
+        ctx.closePath();
+    }
+    update(){
+        this.thing = (this.thing + 0.1);
+        this.y = this.orY + Math.cos(this.thing) * 7;
+        if(this.thing > 360){
+            this.thing = 0;
+        }
+    }
+}
+
+
+            var list = [];
+            var player = new Platformer();
+            var levelNum =  1;
+
+
+            level(levelNum);
+            
+            function nextLev(){
+                levelNum ++;
+                level(levelNum)
+            }
+            function level(x){
+                list = [];
+                switch (x){
+                    case 1:
+                        var block = new Platform(0,500,height-100, width);
+                        list.push(block);
+                        var block = new Platform(150,500,height-250, width);
+                        list.push(block);
+                        var block = new Platform(300,500,height-400, width);
+                        list.push(block);
+                        var block = new Platform(400,400,height-550, width/200);
+                        list.push(block);
+                        var block = new Platform(1350,125,height-100, width/200);
+                        list.push(block);
+                        var portal = new Portal(1412.5,575);
+                        list.push(portal);
+                        player.x = 25;
+                        player.y = 600;
+                        break;
+                    case 2:
+                        var block = new Platform(300,500,height-200, width/200);
+                        list.push(block)
+                        var block = new Platform(200,700,height-500, width/200);
+                        list.push(block)
+                        var portal = new Portal(550,170);
+                        list.push(portal);
+                        player.x = 550;
+                        player.y = 500;
+                        break;
+                    case 3:
+                        var block = new Platform(0,250,664, 500);
+                        list.push(block)
+                        var block = new Platform(900,50,100, 150);
+                        list.push(block)
+                        var block = new Platform(900,50,500, 250);
+                        list.push(block)
+                        var block = new Platform(700,50,100, 370);
+                        list.push(block)
+                        var block = new Platform(1340,150,300, 50);
+                        list.push(block)
+                        var dead = new Dead(950,5,100,150);
+                        list.push(dead);
+                        var portal = new Portal(75,75);
+                        list.push(portal);
+                        player.x = 50;
+                        player.y = 600;
+                        break;
+                    case 4:
+                        var block = new Platform(0,150,664, 500);
+                        list.push(block)
+                        var block = new Platform(100,50,0, 450);
+                        list.push(block)
+                        var block = new Platform(400,50,0, 50);
+                        list.push(block)
+                        var block = new Platform(400,50,160, 1000);
+                        list.push(block)
+                        var dead = new Dead(400,50,150, 10);
+                        list.push(dead)
+                        var block = new Platform(700,50,0, 400);
+                        list.push(block)
+                        var block = new Platform(700,50,700, 1000);
+                        list.push(block)
+                        var block = new Platform(1300,50,0, 100);
+                        list.push(block)
+                        var block = new Platform(1300,50,310, 1000);
+                        list.push(block)
+                        var dead = new Dead(1300,50,300,10);
+                        list.push(dead);
+                        var portal = new Portal(1450,600);
+                        var recharge = new Recharge(275,300);
+                        list.push(recharge);
+                        var recharge = new Recharge(1035,300);
+                        list.push(recharge);
+                        list.push(portal);
+                        player.x = 50;
+                        player.y = 600;
+                        break;
+                    case 5:
+                        var block = new Platform(200,50,0, 65);
+                        list.push(block)
+                        var block = new Platform(200,50,210, 750);
+                        list.push(block)
+                        var dead = new Dead(200,50,65, 10);
+                        list.push(dead)
+                        var dead = new Dead(200,50,200, 10);
+                        list.push(dead)
+                        var block = new Platform(500,50,0, 50);
+                        list.push(block)
+                        var block = new Platform(500,50,160, 1000);
+                        list.push(block)
+                        var dead = new Dead(500,50,150, 10);
+                        list.push(dead)
+                        var block = new Platform(800,50,0, 400);
+                        list.push(block)
+                        var block = new Platform(800,50,500, 1000);
+                        list.push(block)
+                        var block = new Platform(1100,50,0, 600);
+                        list.push(block)
+                        var block = new Platform(800,50,700, 1000);
+                        list.push(block)
+                        var block = new Platform(1400,50,0, 100);
+                        list.push(block)
+                        var block = new Platform(1400,50,310,1200);
+                        list.push(block)
+                        var recharge = new Recharge(975,720);
+                        list.push(recharge);
+                        var recharge = new Recharge(1275,720);
+                        list.push(recharge);
+                        var recharge = new Recharge(375,300);
+                        list.push(recharge);
+                        var portal = new Portal(75,75);
+                        list.push(portal);
+                        player.x = 1425;
+                        player.y = 200;
+                        break;
+                    case 6:
+                       player.x = 50;
+                       player.y = 500
+                       var block = new Platform(0,150,700,700);
+                       list.push(block);
+                       var recharge = new Recharge(470,150);
+                       list.push(recharge);
+                       var recharge = new Recharge(1400,250);
+                       list.push(recharge);
+                       var recharge = new Recharge(150,350);
+                       list.push(recharge);
+                       var dead = new Dead(1200,50,0,200);
+                       list.push(dead);
+                       var dead = new Dead(1200,50,450,350);
+                       list.push(dead);
+                       var portal = new Portal(1405,75);
+                       list.push(portal);
+                       break;
+                    }
+            }
+
+
+
+class Particle{
+
+constructor(x,y,xspeed,yspeed,radius){
+    this.x = x;
+    this.y = y;
+    this.xspeed = xspeed;
+    this.yspeed = yspeed;
+    this.radius = radius;
+}
+
+draw(){
+    
+    ctx.beginPath();
+    ctx.fillStyle = "rgb(255,255,255)";
+    ctx.arc(this.x,this.y, this.radius, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.closePath();
+}
+update(){
+    this.x += this.xspeed;
+    this.y += this.yspeed;
+}
+}
+
+class GravityParticle extends Particle{
+
+constructor(x,y,xspeed,yspeed,radius){
+    super(x,y,xspeed,yspeed,radius);
+}
+
+update(){
+    this.x += this.xspeed;
+    this.y += this.yspeed;
+    this.yspeed = Math.abs(this.yspeed*1.095)+0.1;
+}
+
+}
+
+class Spread extends Particle{
+
+constructor(x,y,xspeed,yspeed,radius){
+    super(x,y,xspeed,yspeed,radius);
+}
+
+update(){
+    this.x += this.xspeed/75;
+    this.y += this.yspeed/75;
+    this.yspeed = (this.yspeed*1.125);
+    this.xspeed = (this.xspeed*1.125);
+}
+
+}
+
+class Invert extends Particle{
+
+    constructor(x,y,xspeed,yspeed,radius){
+    super(x,y,xspeed,yspeed,radius);
+    this.originalX = xspeed;
+    this.originalY = yspeed;
+    }
+
+    update(){ 
+        this.x += this.xspeed/2;
+        this.y += this.yspeed/2;
+        this.yspeed = this.yspeed - this.originalY/random(10,100);
+        this.xspeed = this.xspeed - this.originalX/random(10,100);
+    }
+
+}
+
+class Sway extends Particle{
+
+constructor(x,y,xspeed,yspeed,radius){
+    super(x,y,xspeed,yspeed,radius);
+}
+
+update(){
+    this.x += this.xspeed;
+    this.y += this.yspeed;
+    this.yspeed += random(1.125,-1);
+    this.xspeed += random(-2,2) ;
+}
+
+}
+
+class Rand extends Particle{
+
+constructor(x,y,xspeed,yspeed,radius){
+    super(x,y,xspeed,yspeed,radius);
+    this.originalX = xspeed;
+    this.originalY = yspeed;
+}
+
+update(){
+    this.x += this.xspeed;
+    this.y += this.yspeed;
+    this.yspeed += random(this.originalY, -this.originalY)/5;
+    this.xspeed += random(this.originalX, -this.originalX)/5;
+}
+
+}
+
+class GravityParticle2 extends Particle{
+
+constructor(x,y,xspeed,yspeed,radius){
+    super(x,y,xspeed,yspeed,radius);
+}
+
+update(){
+    this.x += this.xspeed;
+    this.y += this.yspeed;
+    this.yspeed += 1;
+    this.xspeed += 0;
+}
+
+}
+
+class GravityParticle3 extends Particle{
+
+constructor(x,y,xspeed,yspeed,radius){
+    super(x,y,xspeed,yspeed,radius);
+}
+
+update(){
+    this.x += this.xspeed;
+    this.y += this.yspeed;
+    this.yspeed = this.yspeed * 1.01 + 0.75;
+    this.xspeed = this.xspeed * 1.01;
+}
+
+}
+
+class Slower extends Particle{
+
+constructor(x,y,xspeed,yspeed,radius){
+    super(x,y,xspeed,yspeed,radius);
+    this.originalX = xspeed;
+    this.originalY = yspeed;
+}
+
+update(){
+    this.x += this.xspeed;
+    this.y += this.yspeed;
+    this.xspeed = this.xspeed/1.01 + this.originalX/75;
+    this.yspeed = this.yspeed/1.01 + this.originalY/75;
+}
+
+}
+
+var parlist = [];
+
+function Explosion(amount){
+for(i = 0; i < amount; i++){
+    //Particle, GravityParticle, GravityParticle2, GravityParticle3, Invert, Sway, Rand, Spread, Slower
+    var part = new GravityParticle3(player.x, player.y, random(-10,10), random(-10,10),random(3.5,7.5));
+    parlist.push(part);
+    var audio = new Audio('bonk.wav');
+    if (amount > 10){
+        audio.volume = 1;
+    }else{
+    audio.volume = 0.1 * amount
+    }
+    audio.play();
+    
+}
+}
+
+
+            function animation(){
+                
+                ctx.beginPath();
+                ctx.fillStyle = "rgb(0,0,0)";
+                ctx.rect(0,0,width,height)
+                ctx.fill();
+                ctx.closePath();
+                
+                for(i = 0; i < list.length; i++){
+                    list[i].update()
+                    list[i].draw()
+                }
+                
+                if(up){
+                    player.jump();
+                }
+                if(left){
+                    player.move(-1);
+                }
+                if(right){
+                    player.move(1);
+                }
+
+
+
+                
+                player.portalCheck();
+                player.dasher();
+                player.rechargeCheck();
+                player.deadCheck();
+                player.update();
+                player.bound();
+                player.draw();
+
+                if(player.isOnGround(0,15) + player.isOnGround(0,-15)){
+                    Explosion(Math.floor(Math.abs(player.yVel)/3+Math.abs(player.xVel)/15));
+                }
+                if(player.isOnGround(2,0) + player.isOnGround(-2,0)){
+                    Explosion(Math.floor(Math.abs(player.yVel)/15+Math.abs(player.xVel)));
+                }
+
+
+                
+                timer = (timer + 1) % 45000
+                
+
+                if (parlist.length > 0){
+                    for (j = 0; j < parlist.length; j++){
+                            parlist[j].draw();
+                            parlist[j].update();     
+                        }
+                    for (j = 0; j < parlist.length; j++){
+                            if(parlist[j].x > width || parlist[j].x < 0 || parlist[j].y > height || parlist[j].y < 0){
+                                parlist.splice(j,1)
+                            } 
+                    }      
+                }
+                
+                if(player.y > height){
+                    var audio = new Audio('glass.mp3');
+                    audio.volume = 0.21 ;
+                    audio.play();
+                    level(levelNum);
+                }
+
+                requestAnimationFrame(animation)
+            }
+
+            animation()
+        </script>
+    </body>
+</html>

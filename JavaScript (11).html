@@ -1,0 +1,334 @@
+﻿
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="code.png">
+    <title>Learn To Code! | JavaScript</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #1155cc;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            width: 100%;
+            box-shadow: 0px -2.5px 10px 5px #111;
+        }
+
+        .li {
+            float: left;
+        }
+
+            .li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+            }
+
+        a:hover {
+            background-color: #2165DC;
+        }
+
+        .homeimg {
+            width: 15px;
+        }
+
+        .Main {
+            padding-top: 3%;
+            padding-left: 1%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 120%;
+            padding-left: 300px;
+            padding-right: 7%;
+            }
+
+        h2 {
+            color: #303030;
+        }
+
+        .editor {
+            height: 300px;
+            width: 50%;
+            border-width: 0px;
+        }
+
+        .editor85 {
+            height: 500px;
+            width: 100%;
+            border-width: 0px;
+        }
+
+        table, td, tr {
+            border-color: grey;
+            border-style: solid;
+            border-collapse: collapse;
+            border-width: 1px;
+        }
+
+            tr:nth-child(2n) {
+                background-color: #EEE;
+            }
+
+        tr {
+            height: 2em;
+        }
+        .Main {
+            padding-top: 3%;
+            padding-left: 1%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 120%;
+            padding-left: 300px;
+            padding-right: 7%;
+            }
+
+            .sidenav {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            z-index: 0;
+            top: 3em;
+            left: 0;
+            background-color: white;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            box-shadow: 0px 10.5px 15px 0px #111;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        hr{
+            width: 85%;
+        }
+
+            .sidenav a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 15px;
+                color: #818181;
+                display: block;
+            }
+
+                .sidenav a:hover {
+                    color: #f1f1f1;
+                    background-color: #aaa;
+                }
+
+    </style>
+</head>
+<body>
+    <ul class="ul">
+        <li class="li"><a href="home.html"><img src="home.png" class="homeimg"></a></li>
+        <li class="li"><a href="HTML.html">HTML </a></li>
+        <li class="li"><a href="CSS.html">CSS </a></li>
+        <li class="li"><a href="JavaScript.html">JavaScript </a></li>
+        <li class="li"><a href="Easter.html"></a></li>
+        <li class="li"><a href="Resources.html">More resources </a></li>
+        <li class="li"><a href="Tips.html">Tips </a></li>
+    </ul>
+    <div class="sidenav">
+      <p style="padding-left:10%;"> JavaScript </p>
+      <hr />
+      <a href="JavaScript.html">Introduction & Basics</a>
+      <a href="JavaScript (2).html">JavaScript Outputs</a>
+      <a href="JavaScript (3).html">Variables and Operations</a>
+      <a href="JavaScript (4).html">Conditions</a>
+      <a href="JavaScript (5).html">Loops</a>
+      <a href="JavaScript (6).html">Functions</a>
+      <a href="JavaScript (7).html">Var, Let and Const</a>
+      <a href="JavaScript Sort.html">Sorting Algorithm</a>
+      <a href="JavaScript (8).html">Objects</a>
+      <a href="JavaScript (9).html">Classes</a>
+      <a href="JavaScript (10).html">Switch Statements</a>
+      <a href="JavaScript (11).html">Regular Expression</a>
+      <a href="JavaScript (12).html">Canvas</a>
+      <a href="JavaScript (13).html">Bouncy Ball</a>
+  </div>
+    <div class="Main">
+        <h1>Regular Expression</h1>
+        a regular expression or regex is used to search a string of text<br />
+        Regular expressions can be used to perform all types of text search and text replace operations.
+        a regular expression is defined with '/pattern/modifiers;'
+        <h1>search()</h1>
+        <iframe src="JS(16).html" class="editor85"></iframe>
+        it returns the position of the second 'the' not he first 'The' because the first 'The' has a capitilized 'T'
+        <iframe src="JS(16) (2).html" class="editor85"></iframe>
+        <h1>replace()</h1>
+        <iframe src="JS(16) (3).html" class="editor85"></iframe>
+        <h1>Modifiers</h1>
+        <ul>
+            <li>i  -	Perform case-insensitive matching (capitalization doesn't matter)</li>
+            <li>g  -	Perform a global match (find all matches rather than stopping after the first match)</li>
+            <li>m  -	Perform multiline matching</li>
+        </ul>
+        <iframe src="JS(16) (4).html" class="editor85"></iframe>
+        the regex has the i modifer meaning that capitalization doesn't matter and so the first 'the' that matches is the capilized one and so 'The' is replaced with a
+        <iframe src="JS(16) (5).html" class="editor85"></iframe>
+        the i and g modifer are active meaning that the replacement is case insensitive and global, so both 'the's will be replaced with 'a'
+        <h1>Patterns</h1>
+        <ul>
+            <li>["asdf"] finds the characters between the brackets</li>
+            <li>[0-9] fins the digits between the brackets, (in this case 0,1,2,3,4,5,6,7,8 and 9)</li>
+            <li>(a|b|sea) finds the things seperated by the '|' character</li>
+        </ul>
+        replaces vowels with _
+        <iframe src="JS(16) (6).html" class="editor85"></iframe>
+        replaces digits from 1-4 with _
+        <iframe src="JS(16) (7).html" class="editor85"></iframe>
+        replaces red, and green with ___
+        <iframe src="JS(16) (8).html" class="editor85"></iframe>
+        <h1>Meta Characters</h1>
+        Meta characters are special characters
+        <table>
+  <tbody><tr>
+    <th style="width:22%">Metacharacter</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>.</td>
+    <td>Find a single character, except newline or line terminator</td>
+  </tr>
+  <tr>
+    <td>\w</td>
+    <td>Find a word character</td>
+  </tr>
+  <tr>
+    <td>\W</td>
+    <td>Find a non-word character</td>
+  </tr>
+  <tr>
+    <td>\d</td>
+    <td>Find a digit</td>
+  </tr>
+  <tr>
+    <td>\D</td>
+    <td>Find a non-digit character</td>
+  </tr>
+  <tr>
+    <td>\s</td>
+    <td>Find a whitespace character</td>
+  </tr>
+  <tr>
+    <td>\S<</td>
+    <td>Find a non-whitespace character</td>
+  </tr>
+  <tr>
+    <td>\b</td>
+    <td>Find a match at the beginning/end of a word, beginning like this: \bHI, 
+    end like this: HI\b</td>
+  </tr>
+  <tr>
+    <td>\B</td>
+    <td>Find a match, but not at the beginning/end of a word</td>
+  </tr>
+  <tr>
+    <td>\0</td>
+    <td>Find a NULL character</td>
+  </tr>
+  <tr>
+    <td>\n</td>
+    <td>Find a new line character</td>
+  </tr>
+  <tr>
+    <td>\f</td>
+    <td>Find a form feed character</td>
+  </tr>
+  <tr>
+    <td>\r</td>
+    <td>Find a carriage return character</td>
+  </tr>
+  <tr>
+    <td>\t</td>
+    <td>Find a tab character</td>
+  </tr>
+  <tr>
+    <td>\v</td>
+    <td>Find a vertical tab character</td>
+  </tr>
+  <tr>
+    <td>\xxx</td>
+    <td>Find the character specified by an octal number xxx</td>
+  </tr>
+  <tr>
+    <td>\xdd</td>
+    <td>Find the character specified by a hexadecimal number dd</td>
+  </tr>
+  <tr>
+    <td>\udddd</td>
+    <td>Find the Unicode character specified by a hexadecimal number dddd</td>
+  </tr>
+</tbody></table>
+<h1>Quantifier</h1>
+<table >
+  <tbody><tr>
+    <th style="width:22%">Quantifier</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>n+</td>
+    <td>Matches any string that contains at least one <em>n</em></td>
+  </tr>
+  <tr>
+    <td>n*</td>
+    <td>Matches any string that contains zero or more occurrences of <em>n</em></td>
+  </tr>
+  <tr>
+    <td>n?</td>
+    <td>Matches any string that contains zero or one occurrences of <em>n</em></td>
+  </tr>
+  <tr>
+    <td>{X}</td>
+    <td>Matches any string that contains a sequence of <i>X</i> <i>n</i>'s</td>
+  </tr>
+  <tr>
+    <td>n{X,Y}</td>
+    <td>Matches any string that contains a sequence of X to Y <i>n</i>'s</td>
+  </tr>
+  <tr>
+    <td>n{X,}</td>
+    <td>Matches any string that contains a sequence of at least X <i>n</i>'s</td>
+  </tr>
+  <tr>
+    <td>n$</td>
+    <td>Matches any string with <em>n</em> at the end of it</td>
+  </tr>
+  <tr>
+    <td>^n</td>
+    <td>Matches any string with <em>n</em> at the beginning of it</td>
+  </tr>
+  <tr>
+    <td>?=n</td>
+    <td>Matches any string that is followed by a specific string <em>n</em></td>
+  </tr>
+  <tr>
+    <td>?!n</td>
+    <td>Matches any string that is not followed by a specific string <em>n</em></td>
+  </tr>
+</tbody></table>
+        <br /><br />
+              <h1>test()</h1>
+        the test method tests to see if there is a match in the string and if so it returns true if not it will return false
+        <iframe src="JS(16) (9).html" class="editor85"></iframe>
+        <iframe src="JS(16) (10).html" class="editor85"></iframe>
+    </div>
+    <script src="https://unpkg.com/scrollreveal@4"></script>
+    <script>
+        
+        var slideUp = {
+            distance: '100%',
+            origin: 'bottom',
+            opacity: 0.01
+        };
+        ScrollReveal().reveal('.editor, .editor85', slideUp);
+    </script>
+</body>
+</html>

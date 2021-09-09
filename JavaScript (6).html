@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="code.png">
+    <title>Learn To Code! | JavaScript</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #1155cc;
+            position: fixed;
+            top: 0;
+            z-index: 1;
+            width: 100%;
+            box-shadow: 0px -2.5px 10px 5px #111;
+        }
+
+        .li {
+            float: left;
+        }
+
+            .li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+            }
+
+        a:hover {
+            background-color: #2165DC;
+        }
+
+        .homeimg {
+            width: 15px;
+        }
+
+        .Main {
+            padding-top: 3%;
+            padding-left: 1%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 120%;
+            padding-left: 300px;
+            padding-right: 7%;
+            }
+
+        h2 {
+            color: #303030;
+        }
+
+        .editor {
+            height: 300px;
+            width: 50%;
+            border-width: 0px;
+        }
+
+        .editor85 {
+            height: 500px;
+            width: 100%;
+            border-width: 0px;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            z-index: 0;
+            top: 3em;
+            left: 0;
+            background-color: white;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            box-shadow: 0px 10.5px 15px 0px #111;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        hr{
+            width: 85%;
+        }
+
+            .sidenav a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 15px;
+                color: #818181;
+                display: block;
+            }
+
+                .sidenav a:hover {
+                    color: #f1f1f1;
+                    background-color: #aaa;
+                }
+
+        table, td, tr {
+            border-color: grey;
+            border-style: solid;
+            border-collapse: collapse;
+            border-width: 1px;
+        }
+
+            tr:nth-child(2n) {
+                background-color: #EEE;
+            }
+
+        tr {
+            height: 2em;
+        }
+    </style>
+</head>
+<body>
+    <ul class="ul">
+        <li class="li"><a href="home.html"><img src="home.png" class="homeimg"></a></li>
+        <li class="li"><a href="HTML.html">HTML </a></li>
+        <li class="li"><a href="CSS.html">CSS </a></li>
+        <li class="li"><a href="JavaScript.html">JavaScript </a></li>
+        <li class="li"><a href="Easter.html"></a></li>
+        <li class="li"><a href="Resources.html">More resources </a></li>
+        <li class="li"><a href="Tips.html">Tips </a></li>
+    </ul>
+    <div class="sidenav">
+        <p style="padding-left:10%;"> JavaScript </p>
+        <hr />
+        <a href="JavaScript.html">Introduction & Basics</a>
+        <a href="JavaScript (2).html">JavaScript Outputs</a>
+        <a href="JavaScript (3).html">Variables and Operations</a>
+        <a href="JavaScript (4).html">Conditions</a>
+        <a href="JavaScript (5).html">Loops</a>
+        <a href="JavaScript (6).html">Functions</a>
+        <a href="JavaScript (7).html">Var, Let and Const</a>
+        <a href="JavaScript Sort.html">Sorting Algorithm</a>
+        <a href="JavaScript (8).html">Objects</a>
+        <a href="JavaScript (9).html">Classes</a>
+        <a href="JavaScript (10).html">Switch Statements</a>
+        <a href="JavaScript (11).html">Regular Expression</a>
+        <a href="JavaScript (12).html">Canvas</a>
+        <a href="JavaScript (13).html">Bouncy Ball</a>
+    </div>
+    <div class="Main">
+        <h1>Functions</h1>
+        in JavaScript we can create functions that performs a task for us so that we don't have to write is over and over again or so that we can make our code easier to understand.
+        <br /><br />
+        lets say I wanted to write code that calculates the length of the hypothenous of a right angle triangle
+        <br />
+        if you have done this you would know about the theorm a<sup>2</sup>+ b<sup>2</sup> = c<sup>2</sup>
+        <br /><br />
+        lets make up the sides for a and b, lets say 3 and 4
+        <iframe src="JS(10).html" class="editor85"></iframe>
+        now what if we wanted to do other triangles too
+        <iframe src="JS(10) (2).html" class="editor85"></iframe>
+        we can save space and make our code easier to understand with the use of functions
+        <iframe src="JS(10) (3).html" class="editor85"></iframe>
+        the function is defines with function <br /><br /><br />'functionname '(<i>parameters</i>){
+        <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;what you want it to do<br />
+        }
+        <br /><br /><br />
+        the function can be called with 'functionname'()
+        <br /><br />
+        a function doesn't need parameters but if it has then then you must put the parameters in the brackets when you call it.
+
+        <h1>Outputs</h1>
+        a function can have output that it returns
+        <iframe src="JS(10) (4).html" class="editor85"></iframe>
+        <h1>Recursion</h1>
+        recursion is when you call a function inside of itself
+        <br /><br />
+        in this example we are gonna make a function that gives us the sum of all numbers up to 'n'
+        <iframe src="JS(10) (5).html" class="editor85"></iframe><!--i dont really get it so ill do it later lol-->
+        <br /><br /><br />
+        this is what it looks to use recursion
+        <iframe src="JS(10) (6).html" class="editor85"></iframe><!--i dont really get it so ill do it later lol-->
+        what is happening is that it is calling the function and it takes 'output' and adds 'num' to it and then calls the function again but with the new 'output' and 'num' reduced by 1 until num is 0<br /> so basically what it is doing is 100+99+98+97...1
+        <br /><br />
+    </div>
+    <script src="https://unpkg.com/scrollreveal@4"></script>
+    <script>
+        
+        var slideUp = {
+            distance: '100%',
+            origin: 'bottom',
+            opacity: 0.01
+        };
+        ScrollReveal().reveal('.editor, .editor85', slideUp);
+    </script>
+</body>
+</html>

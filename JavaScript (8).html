@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="code.png">
+    <title>Learn To Code! | JavaScript</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #1155cc;
+            position: fixed;
+            top: 0;
+            z-index: 1;
+            width: 100%;
+            box-shadow: 0px -2.5px 10px 5px #111;
+        }
+
+        .li {
+            float: left;
+        }
+
+            .li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+            }
+
+        a:hover {
+            background-color: #2165DC;
+        }
+
+        .homeimg {
+            width: 15px;
+        }
+
+        .Main {
+            padding-top: 3%;
+            padding-left: 1%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
+
+        h2 {
+            color: #303030;
+        }
+
+        .editor {
+            height: 300px;
+            width: 50%;
+            border-width: 0px;
+        }
+
+        .editor85 {
+            height: 500px;
+            width: 100%;
+            border-width: 0px;
+        }
+
+        table, td, tr {
+            border-color: grey;
+            border-style: solid;
+            border-collapse: collapse;
+            border-width: 1px;
+        }
+
+            tr:nth-child(2n) {
+                background-color: #EEE;
+            }
+
+        tr {
+            height: 2em;
+        }
+        .Main {
+            padding-top: 3%;
+            padding-left: 1%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 120%;
+            padding-left: 300px;
+            padding-right: 7%;
+            }
+
+            .sidenav {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            z-index: 0;
+            top: 3em;
+            left: 0;
+            background-color: white;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            box-shadow: 0px 10.5px 15px 0px #111;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        hr{
+            width: 85%;
+        }
+
+            .sidenav a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 15px;
+                color: #818181;
+                display: block;
+            }
+
+                .sidenav a:hover {
+                    color: #f1f1f1;
+                    background-color: #aaa;
+                }
+
+    </style>
+</head>
+<body>
+    <ul class="ul">
+        <li class="li"><a href="home.html"><img src="home.png" class="homeimg"></a></li>
+        <li class="li"><a href="HTML.html">HTML </a></li>
+        <li class="li"><a href="CSS.html">CSS </a></li>
+        <li class="li"><a href="JavaScript.html">JavaScript </a></li>
+        <li class="li"><a href="Easter.html"></a></li>
+        <li class="li"><a href="Resources.html">More resources </a></li>
+        <li class="li"><a href="Tips.html">Tips </a></li>
+    </ul>
+    <div class="sidenav">
+        <p style="padding-left:10%;"> JavaScript </p>
+        <hr />
+        <a href="JavaScript.html">Introduction & Basics</a>
+        <a href="JavaScript (2).html">JavaScript Outputs</a>
+        <a href="JavaScript (3).html">Variables and Operations</a>
+        <a href="JavaScript (4).html">Conditions</a>
+        <a href="JavaScript (5).html">Loops</a>
+        <a href="JavaScript (6).html">Functions</a>
+        <a href="JavaScript (7).html">Var, Let and Const</a>
+        <a href="JavaScript Sort.html">Sorting Algorithm</a>
+        <a href="JavaScript (8).html">Objects</a>
+        <a href="JavaScript (9).html">Classes</a>
+        <a href="JavaScript (10).html">Switch Statements</a>
+        <a href="JavaScript (11).html">Regular Expression</a>
+        <a href="JavaScript (12).html">Canvas</a>
+        <a href="JavaScript (13).html">Bouncy Ball</a>
+    </div>
+    <div class="Main">
+        <h1>Objects</h1>
+        in JavaScript we can define objects.<br /><br />
+        in reallife objects have properties such as weight, size etc
+        <br /><br />
+        we can define variables in JavaScript<br />
+        an object is also a type of variable
+        <iframe src="JS(12).html" class="editor85"></iframe>
+        <br />
+        we have to use person.firstName, because it is not a variable but is a property of the person variable.
+        <br /><br />
+        The values are written as <i>name:value</i><br />and can be acsessed with
+        <i>objectName.propertyName</i>
+        <br /><br />
+        <h1>This.<i>value</i></h1>
+        <iframe src="JS(12) (4).html" class="editor85"></iframe>
+        since person.fullName is a function it will return the function definition because we should have used person.fullName();
+        <iframe src="JS(12) (5).html" class="editor85"></iframe>
+        <br /><br />
+        <h1>Constructors</h1>
+        <iframe src="JS(12) (2).html" class="editor85"></iframe>
+        <iframe src="JS(12) (3).html" class="editor85"></iframe>
+    </div>
+    <script src="https://unpkg.com/scrollreveal@4"></script>
+    <script>
+        
+        var slideUp = {
+            distance: '100%',
+            origin: 'bottom',
+            opacity: 0.01
+        };
+        ScrollReveal().reveal('.editor, .editor85', slideUp);
+    </script>
+</body>
+</html>

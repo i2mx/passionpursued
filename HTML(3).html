@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="code.png">
+    <title>Learn To Code! | HTML</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #1155cc;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            box-shadow: 0px -2.5px 10px 5px #111;
+            z-index: 1;
+        }
+
+        .li {
+            float: left;
+        }
+
+            .li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+            }
+
+        a:hover {
+            background-color: #2165DC;
+        }
+
+        .homeimg {
+            width: 15px;
+        }
+
+        .Main {
+            padding-top: 3%;
+            padding-left: 1%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 120%;
+            padding-left: 300px;
+            padding-right: 7%;
+            }
+
+        h2 {
+            color: #303030;
+        }
+
+        .editor {
+            height: 300px;
+            width: 50%;
+            border-width: 0px;
+        }
+
+        .editor85 {
+            height: 500px;
+            width: 100%;
+            border-width: 0px;
+        }
+
+        p {
+            color: #202020;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        table, td, tr {
+            border-color: grey;
+            border-width: 0.1px;
+            border-style: solid;
+            height:0.5em;
+            padding: 1em;
+        }
+
+
+
+    
+
+        .sidenav {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            z-index: 0;
+            top: 3em;
+            left: 0;
+            background-color: white;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            box-shadow: 0px 10.5px 15px 0px #111;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+
+            .sidenav a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 15px;
+                color: #818181;
+                display: block;
+            }
+
+                .sidenav a:hover {
+                    color: #f1f1f1;
+                    background-color: #aaa;
+                }
+
+        hr {
+            width: 85%;
+        }
+    </style>
+</head>
+<body>
+    <ul class="ul">
+        <li class="li"><a href="home.html"><img src="home.png" class="homeimg"></a></li>
+        <li class="li"><a href="HTML.html">HTML </a></li>
+        <li class="li"><a href="CSS.html">CSS </a></li>
+        <li class="li"><a href="JavaScript.html">JavaScript </a></li>
+        <li class="li"><a href="Easter.html"></a></li>
+        <li class="li"><a href="Resources.html">More resources </a></li>
+        <li class="li"><a href="Tips.html">Tips </a></li>
+    </ul>
+    <div class="sidenav">
+        <p style="padding-left:10%;"> HTML </p>
+        <hr />
+        <a href="HTML.html">Introduction & Basics</a>
+        <a href="HTML(2).html">HTML Attributes</a>
+        <a href="HTML(3).html">HTML Formatting</a>
+        <a href="HTML(4).html">HTML Tables & Lists</a>
+        <a href="HTML(5).html">HTML Divs</a>
+        <a href="HTML(6).html">HTML iFrames</a>
+        <a href="HTML(7).html">Basic CSS</a>
+        <a href="HTML(8).html">HTML Class & Id</a>
+        <a href="HTML(9).html">HTML Semantic Elements</a>
+        <a href="HTML(10).html">HTML Forms</a>
+    </div>
+    <div class="Main">
+
+        <h1>HTML Basic Text Formatting</h1>
+        <br />
+        <p>
+            <h1>Example</h1>
+            <iframe src="HTMLEdit3.html" class="editor85"></iframe>
+            <h1>HTML Text Formatting Elements</h1>
+            <table width=45%>
+
+                <tr>
+
+                    <td style="border-width:0px;">
+                        HTML text formatting tags
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mark>&ltb&gt</mark> defines <b>bold</b> font
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mark>&ltem&gt</mark> defines <em>emphasized</em> text
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mark>&lti&gt</mark> defines <i>italic</i> text
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mark>&ltsmall&gt</mark> defines <small>small</small> text
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mark>&ltstrong&gt</mark> defines <strong>important</strong> text
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mark>&ltsub&gt</mark> defines <sub>subscript</sub> text
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mark>&ltsup&gt</mark> defines <sup>superscript</sup> text
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mark>&ltins&gt</mark> defines <ins>inserted</ins> text
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mark>&ltdel&gt</mark> defines <del>deleted</del> text
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mark>&ltmark&gt</mark> defines <mark>marked/highlighted</mark> text
+                    </td>
+                </tr>
+            </table>
+            <h1>Example</h1>
+            <iframe src="HTMLEdit4.html" class="editor85"></iframe>
+
+
+</div>
+<script src="https://unpkg.com/scrollreveal@4"></script>
+<script>
+    
+    var slideUp = {
+        distance: '100%',
+        origin: 'bottom',
+        opacity: 0.01
+    };
+    ScrollReveal().reveal('.editor, .editor85', slideUp);
+</script>
+</body>
+</html>
