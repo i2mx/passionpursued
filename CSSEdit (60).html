@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+
+        .btn {
+            position: fixed;
+            right: 0;
+            padding: 0.4rem;
+            width: 3rem;
+            background: #1155CC;
+            color: white;
+            border-width: 0;
+            font-size: 1rem;
+            outline: none;
+            cursor: pointer;
+            height: 15vh;
+        }
+
+            .btn:hover {
+                color: white;
+                background: #2165DC;
+            }
+
+
+        .main-editor {
+            background-color: white;
+            display: flex;
+            width: 100%;
+            padding: 0;
+            position: fixed;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            border: 0px solid #36383f;
+        }
+
+        .first {
+            background-color: #171717;
+            width: 50%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            white-space: pre;
+            padding: 0.4rem;
+            height: 90vh;
+            border-width: 10px;
+            border-color: black;
+            color: white;
+            font-family: "Courier New"
+        }
+
+        .second {
+            background-color: #ffffff;
+            width: 50%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            white-space: pre;
+            padding: 0.4rem;
+            height: 90vh;
+        }
+            div {
+                    padding: 0px;
+                    margin: 0px;
+                }
+            body {
+                padding:0px;
+
+            }
+    </style>
+
+    
+    <title>Online Code Editor</title>
+</head>
+<body>
+    <div class="main-editor">
+        <button class="btn">Run</button>
+        <div class="first" contenteditable id="first">&lt!DOCTYPE html&gt
+            <span id="my-message">
+&lt;head&gt;
+
+&lt;style&gt;
+
+body {
+    padding:0px;
+    margin:0px;
+    height:1000px /* Only here to allow you to*/
+
+}
+
+ul {
+    padding:0px;
+    margin:0px;
+    list-style-type: none; /*No dots on the list items*/               
+    position: fixed; /*makes sure the list doesn't vanish off the page*/
+    top: 0; /*fixes the bar at the top of the page*/
+    width: 100%; /*makes sure it takes up the whole page*/
+    background-color:grey
+}
+
+li {
+     float: left; /*orders the list left to right rather than top to bottom*/
+}
+
+li a{
+    text-decoration: none; /*No lines on the links*/
+    display: block; /*each list item is in a nice big box*/
+    padding: 10px; /*determines the size of the boxes*/
+    color: white;
+    font-family:Segoe UI;
+}
+a:hover {
+    background-color:dimgrey;                
+}
+
+.dropdown-content {
+      display: none; /*makes sure the div doesn't display by default*/
+      position: absolute; /*makes sure the page doesn't move with the div*/
+      background-color: white;
+      min-width: 160px;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      display: block;
+      text-align: left; /*text aligned to left of block*/
+    }
+    .dropdown-content a:hover {
+      background-color: lightgrey;
+    }
+    .dropdown:hover .dropdown-content { /*only display div when hovering over .dropdown*/
+      display: block; /*Display div as block rather than none*/
+    }
+&lt;/style&gt;
+
+&lt;/head&gt;
+
+
+&lt;body&gt;
+
+&lt;ul&gt; 
+
+&lt;li class="dropdown"&gt; 
+    &lt;a href=""&gt;Nav1&lt;/a&gt;
+    &lt;div class="dropdown-content"&gt;
+        &lt;a href=""&gt;1&lt;/a&gt
+        &lt;a href=""&gt;2&lt;/a&gt
+        &lt;a href=""&gt;3&lt;/a&gt
+    &lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+    &lt;a href=""&gt;Nav2&lt;/a&gt;    
+&lt;/li&gt;
+&lt;li&gt; 
+    &lt;a href=""&gt;Nav3&lt;/a&gt
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;/body&gt;
+            </span>
+        </div>
+        <iframe class="second">
+        </iframe>
+    </div>
+
+    <script>
+
+        const first = document.querySelector(".first");
+        const iframe = document.querySelector("iframe");
+        const btn = document.querySelector("button");
+
+        btn.addEventListener("click", () => {
+            var html = first.textContent;
+            iframe.src = "data:text/html;charset=utf-8," + encodeURI(html);
+        });
+
+
+        first.addEventListener('keyup', () => {
+            var html = first.textContent;
+            iframe.src = "data:text/html;charset=utf-8," + encodeURI(html);
+        })
+
+        first.addEventListener("paste", function (e) {
+            e.preventDefault();
+            var text = e.clipboardData.getData("text/plain");
+            document.execCommand("insertText", false, text);
+        });</script>
+</body>
+</html>

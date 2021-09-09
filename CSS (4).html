@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="code.png">
+    <title>Learn To Code! | CSS</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #1155cc;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            box-shadow: 0px -2.5px 10px 5px #111;
+            z-index: 1;
+        }
+
+        .li {
+            float: left;
+        }
+
+            .li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+            }
+
+        a:hover {
+            background-color: #2165DC;
+        }
+
+        .homeimg {
+            width: 15px;
+        }
+
+        .Main {
+            padding-top: 3%;
+            padding-left: 230px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
+
+        h2 {
+            color: #303030;
+        }
+
+        .editor {
+            height: 300px;
+            width: 50%;
+            border-width: 0px;
+        }
+
+        .editor85 {
+            height: 500px;
+            width: 100%;
+            border-width: 0px;
+        }
+
+        table, td, tr {
+            border-color:grey; 
+            border-style:solid;
+            border-collapse:collapse;
+            border-width:1px;
+        } 
+
+        tr:nth-child(2n) {
+            background-color:#EEE;
+        }
+
+        tr{
+            height:2em;
+        }
+        .sidenav {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            z-index: 0;
+            top: 3em;
+            left: 0;
+            background-color: white;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            box-shadow: 0px 10.5px 15px 0px #111;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        hr{
+            width: 85%;
+        }        .Main {
+            padding-top: 3%;
+            padding-left: 1%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 120%;
+            padding-left: 300px;
+            padding-right: 7%;
+            }
+
+            .sidenav a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 15px;
+                color: #818181;
+                display: block;
+            }
+
+                .sidenav a:hover {
+                    color: #f1f1f1;
+                    background-color: #aaa;
+                }
+    </style>
+</head>
+<body>
+    <ul class="ul">
+        <li class="li"><a href="home.html"><img src="home.png" class="homeimg"></a></li>
+        <li class="li"><a href="HTML.html">HTML </a></li>
+        <li class="li"><a href="CSS.html">CSS </a></li>
+        <li class="li"><a href="JavaScript.html">JavaScript </a></li>
+        <li class="li"><a href="Easter.html"></a></li>
+        <li class="li"><a href="Resources.html">More resources </a></li>
+        <li class="li"><a href="Tips.html">Tips </a></li>
+    </ul>
+    <div class="sidenav">
+        <p style="padding-left:10%;"> CSS </p>
+        <hr />
+        <a href="CSS.html">Introduction & Basics</a>
+        <a href="CSS (1).html">Basic Syntax and Selectors</a>
+        <a href="CSS (2).html">CSS Borders</a>
+        <a href="CSS (3).html">CSS Units</a>
+        <a href="CSS (4).html">Padding and Margins</a>
+        <a href="CSS (5).html">CSS Fonts</a>
+        <a href="CSS (6).html">Backgrounds</a>
+        <a href="CSS (7).html">CSS Gradients</a>
+        <a href="CSS (8).html">CSS Shadows</a>
+        <a href="CSS (9).html">CSS Overflow</a>
+        <a href="CSS (10).html">CSS Float</a>
+        <a href="CSS (11).html">Min and Max Width</a>
+        <a href="CSS (13).html">Navigation Bars</a>
+        <a href="CSS (14).html">Animations</a>
+        <a href="CSS (15).html">More Selectors</a>
+    </div>
+    <div class="Main">
+        <p>
+            <h1>CSS Padding & Margins</h1>
+            <br />
+            Padding is used to create blank space inside a element
+            <br />
+            while a Margin is used to create blank space outside the borders of the element
+            <br /><br />
+            <h1>Padding</h1>
+            <br />
+            The padding property specifies the amount of empty space in an element
+            <br /><br />
+            The <i>padding</i> properties of an element can be specifyed with
+            <ul>
+                <li>padding-top</li>
+                <li>padding-right</li>
+                <li>padding-bottom</li>
+                <li>padding-left</li>
+            </ul>
+            <iframe class="editor85" src="CSSEdit (11).html"></iframe>
+            <h1>Margins</h1>
+            <br />
+            The margin property specifies the amount of white space around an element.
+            <br /><br />
+            The <i>margin</i> properties of an element can be specifyed with
+            <ul>
+                <li>margin-top</li>
+                <li>margin-right</li>
+                <li>margin-bottom</li>
+                <li>margin-left</li>
+            </ul>
+            <iframe class="editor85" src="CSSEdit (12).html"></iframe>
+
+        </p>
+
+    </div>
+    <script src="https://unpkg.com/scrollreveal@4"></script>
+    <script>
+        
+        var slideUp = {
+            distance: '100%',
+            origin: 'bottom',
+            opacity: 0.01
+        };
+        ScrollReveal().reveal('.editor, .editor85', slideUp);
+    </script>
+</body>
+</html>
